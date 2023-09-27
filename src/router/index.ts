@@ -40,25 +40,26 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '/manage/userManage/moreGroupConfig',
         component: () => import('../views/Manage/userManage/moreGroupConfig/index.vue')
+      },
+      {
+        path: '/manage/robotManage',
+        component: () => import('../views/Manage/robotManage/index.vue')
+      },
+      {
+        path: '/manage/alarmReminder',
+        component: () => import('../views/Manage/alarmReminder/index.vue')
+      },
+      {
+        path: '/manage/missionLog',
+        component: () => import('../views/Manage/missionLog/index.vue')
+      },
+      {
+        path: '/manage/informLog',
+        component: () => import('../views/Manage/informLog/index.vue')
       }
     ]
   },
-  {
-    path: '/manage/robotManage',
-    component: () => import('../views/Manage/robotManage/index.vue')
-  },
-  {
-    path: '/manage/alarmReminder',
-    component: () => import('../views/Manage/alarmReminder/index.vue')
-  },
-  {
-    path: '/manage/missionLog',
-    component: () => import('../views/Manage/missionLog/index.vue')
-  },
-  {
-    path: '/manage/informLog',
-    component: () => import('../views/Manage/informLog/index.vue')
-  }
+
 ]
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

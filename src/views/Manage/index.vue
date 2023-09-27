@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+const routerPath:string = window.location.pathname; 
 const handleCommand = (command: number) => {
     ElMessage({
         message: '点击' + command,
@@ -41,74 +42,62 @@ const handleClose = () => {
                 </el-dropdown>
             </el-header>
             <el-container>
-                <el-aside width="14vw">
+                <el-aside width="13vw">
                     <el-menu style="color:#fff" background-color="#03002B" text-color="#fff" active-text-color="#fff"
-                        unique-opened @open="handleOpen" @close="handleClose">
-                        <el-menu-item index="1">
-                            <el-icon>
-                                <setting />
-                            </el-icon>
+                        unique-opened @open="handleOpen" @close="handleClose" router :default-active="routerPath">
+                        <el-menu-item index="/manage/sendMessage">
+                            <svg-icon iconName="icon-pinglun" className="svg"></svg-icon>
                             <span>消息发送</span>
                         </el-menu-item>
-                        <el-menu-item index="2">
-                            <el-icon>
-                                <setting />
-                            </el-icon>
+                        <el-menu-item index="/manage/messageTemplate">
+                            <svg-icon iconName="icon-yanzhengma" className="svg"></svg-icon>
                             <span>消息模板</span>
                         </el-menu-item>
-                        <el-menu-item index="3">
-                            <el-icon>
-                                <setting />
-                            </el-icon>
+                        <el-menu-item index="/manage/dataBoard">
+                            <svg-icon iconName="icon-shujuzhuzhuangtu" className="svg"></svg-icon>
                             <span>数据看板</span>
                         </el-menu-item>
-                        <el-sub-menu index="4">
+                        <el-sub-menu index="/manage/userManage/manage">
                             <template #title>
-                                <el-icon>
-                                    <location />
-                                </el-icon>
+                                <svg-icon iconName="icon-shenhe" className="svg"></svg-icon>
                                 <span>用户管理</span>
                             </template>
                             <el-menu-item-group>
-                                <el-menu-item index="4-1">用户管理</el-menu-item>
-                                <el-menu-item index="4-2">用户组配置</el-menu-item>
-                                <el-menu-item index="4-3">群组管理</el-menu-item>
-                                <el-menu-item index="4-4">多群组管理</el-menu-item>
+                                <el-menu-item index="/manage/userManage/manage">用户管理</el-menu-item>
+                                <el-menu-item index="/manage/userManage/userGroup">用户组配置</el-menu-item>
+                                <el-menu-item index="/manage/userManage/groupConfig">群组管理</el-menu-item>
+                                <el-menu-item index="/manage/userManage/moreGroupConfig">多群组管理</el-menu-item>
                             </el-menu-item-group>
                         </el-sub-menu>
-                        <el-menu-item index="5">
-                            <el-icon>
-                                <UserFilled />
-                            </el-icon>
+                        <el-menu-item index="/manage/robotManage">
+                            <svg-icon iconName="icon-jiqirenguanli" className="svg"></svg-icon>
                             <span>机器人管理</span>
                         </el-menu-item>
-                        <el-menu-item index="6">
-                            <el-icon>
-                                <setting />
-                            </el-icon>
+                        <el-menu-item index="/manage/alarmReminder">
+                            <svg-icon iconName="icon-tishi" className="svg"></svg-icon>
                             <span>告警提醒</span>
                         </el-menu-item>
-                        <el-menu-item index="7">
-                            <el-icon>
-                                <setting />
-                            </el-icon>
+                        <el-menu-item index="/manage/missionLog">
+                            <svg-icon iconName="icon-xiangmu" className="svg"></svg-icon>
                             <span>任务记录</span>
                         </el-menu-item>
-                        <el-menu-item index="8">
-                            <el-icon>
-                                <setting />
-                            </el-icon>
+                        <el-menu-item index="/manage/informLog">
+                            <svg-icon iconName="icon-caozuorizhi" className="svg"></svg-icon>
                             <span>通知记录</span>
                         </el-menu-item>
                     </el-menu>
                 </el-aside>
-                <el-main>Main</el-main>
+                <el-main><router-view></router-view></el-main>
             </el-container>
         </el-container>
     </div>
 </template>
 
 <style lang="scss" scoped>
+.svg {
+    margin-right: 1em;
+}
+
 .common-layout {
     width: 100vw;
     height: 100vh;
@@ -133,6 +122,24 @@ const handleClose = () => {
 
         .el-aside {
             background-color: rgb(3, 0, 43);
+
+            ::v-deep .el-menu-item {
+                padding-left: 40px;
+            }
+
+            ::v-deep .is-active {
+                background-color: rgb(68, 96, 239);
+            }
+
+            ::v-deep .el-sub-menu__title {
+                padding-left: 40px;
+            }
+
+            .el-menu-item-group {
+                ::v-deep .el-menu-item {
+                    justify-content: center;
+                }
+            }
         }
     }
 }

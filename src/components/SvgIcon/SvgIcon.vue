@@ -18,11 +18,11 @@ const props = defineProps({
   },
   color: {
     type: String,
-    default: '#409eff'
+    default: '#fff'
   }
 });
 // 图标在 iconfont 中的名字
-const iconClassName = computed(() => {
+const iconClassName = computed(()=>{
   return `#${props.iconName}`;
 })
 // 给图标添加上类名
@@ -37,8 +37,8 @@ const svgClass = computed(() => {
 
 <style scoped>
 .svg-icon {
-  width: 1em;
-  height: 1em;
+  width: 1.2em;
+  height: 1.2em;
   position: relative;
   fill: currentColor;
   vertical-align: -2px;

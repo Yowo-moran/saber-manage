@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const routerPath:string = window.location.pathname; 
+const routerPath: string = window.location.pathname;
 const handleCommand = (command: number) => {
     ElMessage({
         message: '点击' + command,
@@ -123,23 +123,28 @@ const handleClose = () => {
         .el-aside {
             background-color: rgb(3, 0, 43);
 
-            ::v-deep .el-menu-item {
+            ::v-deep(.el-menu-item) {
                 padding-left: 40px;
             }
 
-            ::v-deep .is-active {
+            ::v-deep(.is-active) {
                 background-color: rgb(68, 96, 239);
             }
 
-            ::v-deep .el-sub-menu__title {
+            ::v-deep(.el-sub-menu__title) {
                 padding-left: 40px;
             }
 
             .el-menu-item-group {
-                ::v-deep .el-menu-item {
+                ::v-deep(.el-menu-item) {
                     justify-content: center;
                 }
             }
+        }
+        .el-main {
+            box-sizing: border-box;
+            background-color: rgb(240,243,248);
+            padding: 15px;
         }
     }
 }

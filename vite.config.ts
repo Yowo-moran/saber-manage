@@ -11,7 +11,7 @@ export default defineConfig({
     open: true,
     proxy: {
       '/api': {
-        target: '',//目标 URL
+        target: 'https://v.api.aa1.cn/api/yiyan/',//目标 URL
         changeOrigin: true,
         rewrite: path => path.replace(/^\/api/, '')
       }

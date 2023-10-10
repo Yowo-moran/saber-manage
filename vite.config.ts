@@ -7,15 +7,15 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src')
     }
   },
-  server: {
-    open: true,
-    proxy: {
-      '/api': {
-        target: 'https://v.api.aa1.cn/api/yiyan/',//目标 URL
-        changeOrigin: true,
-        rewrite: path => path.replace(/^\/api/, '')
-      }
-    }
-  },
+  // server: {
+  //   open: true,
+  //   proxy: {
+  //     '/api': {
+  //       target: 'https://v.api.aa1.cn/api/yiyan/',//目标 URL
+  //       changeOrigin: true,
+  //       rewrite: path => path.replace(/^\/api/, '')
+  //     }
+  //   }
+  // },
   plugins: setupVitePlugins()
 });

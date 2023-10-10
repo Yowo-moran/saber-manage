@@ -12,7 +12,7 @@ class Request {
             this.instance.defaults.headers.common['Authorization'] =
                 window.localStorage.getItem('token');
         }
-        
+
         this.instance.interceptors.request.use(
             (res: InternalAxiosRequestConfig) => {
                 return res;
@@ -61,6 +61,32 @@ class Request {
             ...config
         });
     }
+    post<T, P, D>(url: string, data: D, params?: P, config = {}): Promise<T> {
+        return this.request<T>({
+            url,
+            data,
+            params,
+            method: 'POST',
+            ...config
+        });
+    }
+    put<T, P, D>(url: string, data: D, params?: P, config = {}): Promise<T> {
+        return this.request<T>({
+            url,
+            data,
+            params,
+            method: 'PUT',
+            ...config
+        });
+    }
+    delete<T, P>(url: string, params: P, config = {}): Promise<T> {
+        return this.request<T>({
+            url,
+            params,
+            method: 'DELETE',
+            ...config
+        });
+    }
 }
 
-export default Request;
+export default Request

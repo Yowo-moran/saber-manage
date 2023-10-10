@@ -1,6 +1,6 @@
 import Request from './request';
 const _axios = new Request({
-  baseURL: '',
+  baseURL: 'http://saber.api.yuleng.top',
   timeout: 3000,
   interceptors: {
     requestInterceptors: (config: any) => {

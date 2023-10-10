@@ -1,6 +1,6 @@
 import { _axios } from "@/server/index"
 import type { GetTemplateParams, DelTemplateParams, EditTemplateParams } from "../types/paramsType"
-import type { CreateTemplate, EditTemplate, SerchTemplate } from "../types/dataType"
+import type { CreateTemplate, EditTemplate, SearchTemplate } from "../types/dataType"
 import type { BaseResponce, GetMessageTemplateRes, SearchTemplateRes, GetManageRes } from "../types/resType"
 
 
@@ -67,8 +67,8 @@ const editTemplate = async (id: number, form: EditTemplate) => {
     return data;
 }
 
-const searchTemplate = async (page_no: number, page_size: number, form: SerchTemplate) => {
-    const data = await _axios.post<SearchTemplateRes, GetTemplateParams, SerchTemplate>(
+const searchTemplate = async (page_no: number, page_size: number, form: SearchTemplate) => {
+    const data = await _axios.post<SearchTemplateRes, GetTemplateParams, SearchTemplate>(
         '/saber/template/search',
         form,
         {

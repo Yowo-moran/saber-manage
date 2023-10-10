@@ -23,7 +23,7 @@ const templateSearch = ref("");
 const selectValue = ref("");
 const options: any = reactive([]);
 const search = async () => {
-  const data: any = await searchTemplate(currentPage.value, pageSize.value, { create_by: selectValue.value, keyword: templateSearch.value })
+  const data: any = await searchTemplate(currentPage.value, pageSize.value, { createBy: selectValue.value, keyword: templateSearch.value })
   if (data?.result_code === "success") {
     tableData.splice(0, tableData.length, ...data.data.resultList);
     allPage.value = data.data.total;

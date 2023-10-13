@@ -1,4 +1,4 @@
-type GetTemplateParams = {
+type PagingParams = {
     //默认1
     pageNo?: number;
     //默认10
@@ -20,4 +20,14 @@ type EditTemplateParams = {
     name?: string;
     [property: string]: any;
 }
-export type { GetTemplateParams, DelTemplateParams, EditTemplateParams }
+
+type DelRuleParams = {
+    rule_id: number;
+    [property: string]: any;
+}
+
+type EditRuleParams = {
+    rule_id: number;
+    [property: string]: any;
+}
+export type { PagingParams, DelTemplateParams, EditTemplateParams, DelRuleParams, EditRuleParams }

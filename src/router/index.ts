@@ -18,6 +18,10 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/Manage/sendMessage/index.vue')
       },
       {
+        path: '/manage/ruleConfig',
+        component: () => import('../views/Manage/ruleConfig/index.vue')
+      },
+      {
         path: '/manage/messageTemplate',
         component: () => import('../views/Manage/messageTemplate/index.vue')
       },
@@ -38,10 +42,6 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/Manage/userManage/groupConfig/index.vue')
       },
       {
-        path: '/manage/userManage/moreGroupConfig',
-        component: () => import('../views/Manage/userManage/moreGroupConfig/index.vue')
-      },
-      {
         path: '/manage/robotManage',
         component: () => import('../views/Manage/robotManage/index.vue')
       },
@@ -56,7 +56,8 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '/manage/informLog',
         component: () => import('../views/Manage/informLog/index.vue')
-      }
+      },
+
     ]
   },
 

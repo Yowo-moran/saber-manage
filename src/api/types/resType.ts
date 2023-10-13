@@ -4,7 +4,7 @@ type BaseResponce<D> = {
     server_time: number;
 }
 
-type messageTemplateData<A> = {
+type PagingData<A> = {
     pageNo: number;
     pages: number;
     pageSize: number;
@@ -29,18 +29,30 @@ type Template = {
     version?: number;
     [property: string]: any;
 }
-type GetMessageTemplateRes = BaseResponce<messageTemplateData<Template>>
+type GetMessageTemplateRes = BaseResponce<PagingData<Template>>
 
+type resultList = {
+    id: number,
+    name: string,
+    description: string,
+    content: string,
+    version: number,
+    createBy: string,
+    createTime: string,
+    updateBy: string,
+    updateTime: string,
+    isDeleted: number
+}
 
-type SearchTemplateData = {
+type SearchTemplateData<A> = {
     pageNo: number;
     pages: number;
     pageSize: number;
-    resultList: string[];
+    resultList: A[];
     total: number;
     [property: string]: any;
 }
-type SearchTemplateRes = BaseResponce<SearchTemplateData>
+type SearchTemplateRes = BaseResponce<SearchTemplateData<resultList>>
 
 type Manage = {
     createBy?: string;
@@ -56,8 +68,57 @@ type Manage = {
     [property: string]: any;
 }
 
-type GetManageRes = BaseResponce<messageTemplateData<Manage>>
-export type { BaseResponce, GetMessageTemplateRes, SearchTemplateRes, GetManageRes }
+type GetManageRes = BaseResponce<PagingData<Manage>>
 
+type Rule = {
+    chatId: null | string;
+    createBy: null | string;
+    createTime: null | string;
+    feishuAppId: null | string;
+    groupId: number | null;
+    id: number | null;
+    isDeleted: number | null;
+    templateId: number | null;
+    updateBy: null | string;
+    updateTime: null | string;
+    userId: null | string;
+    version: number | null;
+    [property: string]: any;
+}
 
+type GetRuleRes = BaseResponce<PagingData<Rule>>
 
+type User = {
+    createBy: string;
+    createTime: string;
+    email: null | string;
+    grade: string;
+    id: number;
+    isDeleted: number;
+    mobile: string;
+    name: string;
+    updateBy: string;
+    updateTime: string;
+    userId: string;
+    version: number;
+    [property: string]: any;
+}
+type searchUserRes = BaseResponce<PagingData<User>>
+
+type CreateRule = {
+    createBy: string;
+    createTime: string;
+    emailStatus: boolean;
+    feishuStatus: boolean;
+    groupId: null;
+    id: number;
+    isDeleted: null;
+    smsStatus: boolean;
+    templateId: number;
+    updateBy: string;
+    updateTime: string;
+    version: null;
+    [property: string]: any;
+}
+type CreateRuleRes = BaseResponce<CreateRule>
+export type { BaseResponce, GetMessageTemplateRes, SearchTemplateRes, GetManageRes, GetRuleRes, searchUserRes, CreateRuleRes }

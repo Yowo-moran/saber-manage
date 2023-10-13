@@ -50,13 +50,14 @@ const templateDialogForm = reactive({
   description: "",
   content: ""
 });
-type AddTemplate = {
-  content: string;
-  description: string;
-  name: string;
+const reset = () => {
+  templateDialogForm.name = ""
+  templateDialogForm.description = ""
+  templateDialogForm.content = ''
 }
-const addTemplate = async (form: AddTemplate) => {
-  const data = await createTemplate(form);
+
+const addTemplate = async () => {
+  const data = await createTemplate(templateDialogForm);
   if (data?.result_code === 'success') {
     getList()
     templateDialog.value = false;
@@ -116,11 +117,7 @@ const handleCurrentChange = (val: number) => {
       </div>
       <el-button type="primary" color="#4460EF" @click="() => {
         templateDialog = true;
-        templateDialogForm = {
-          name: '',
-          description: '',
-          content: ''
-        }
+        reset()
       }">
         <svg-icon iconName="icon-jiahao" className="svg" color="#ffffff"></svg-icon>
         <strong style="font-weight: 600; margin: 0 1em">新建</strong>
@@ -128,10 +125,10 @@ const handleCurrentChange = (val: number) => {
     </div>
     <div class="table-main">
       <el-table :data="tableData" height="100%" style="width: 100%"
-        :header-cell-style="{ 'background-color': '#EDF1F7', color: 'black' }">
-        <el-table-column prop="id" label="模板ID" width="100" />
+        :header-cell-style="{ 'background-color': '#EDF1F7', color: 'black' }" stripe>
+        <el-table-column prop="id" label="模板ID" width="150" />
         <el-table-column prop="name" label="模板名称" width="200" />
-        <el-table-column prop="description" label="模板简介" />
+        <el-table-column prop="description" label="模板简介" width="200" />
         <el-table-column prop="content" label="模板内容" />
         <el-table-column prop="updateBy" label="创建人" width="120" />
         <el-table-column fixed="right" label="操作项" width="180">
@@ -161,7 +158,7 @@ const handleCurrentChange = (val: number) => {
         @size-change="handleSizeChange" @current-change="handleCurrentChange" />
     </div>
   </div>
-  <el-dialog v-model="templateDialog" width="70%" align-center="true">
+  <el-dialog v-model="templateDialog" width="70%" align-center>
     <el-form :model="templateDialogForm" label-width="120px">
       <el-form-item label="模板名称">
         <el-input v-model="templateDialogForm.name" maxlength="10" show-word-limit style="width: 35%"

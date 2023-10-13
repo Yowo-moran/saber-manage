@@ -19,4 +19,25 @@ type SearchTemplate = {
     keyword?: string;
     [property: string]: any;
 }
-export type { CreateTemplate, EditTemplate, SearchTemplate }
+type SearchUser = {
+    keyword: string;
+    [property: string]: any;
+}
+type CreateRule = {
+    emailStatus?: boolean;
+    feishuStatus?: boolean;
+    groupId?: number | string;
+    ruleCode: string;
+    smsStatus?: boolean;
+    templateId: number | string;
+    [property: string]: any;
+}
+type EditRule = {
+    chatId?: string;
+    ppId?: string;
+    groupId?: number;
+    templateId?: number;
+    userId?: string;
+    [property: string]: any;
+}
+export type { CreateTemplate, EditTemplate, SearchTemplate, SearchUser, CreateRule, EditRule }

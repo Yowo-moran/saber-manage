@@ -1,24 +1,5 @@
 <script lang="ts" setup>
 const routerPath: string = window.location.pathname;
-const handleCommand = (command: number) => {
-    ElMessage({
-        message: '点击' + command,
-        type: 'success',
-    })
-}
-const handleOpen = ($event: Object) => {
-    ElMessage({
-        message: '点击',
-        type: 'success',
-    })
-    console.log($event)
-}
-const handleClose = () => {
-    ElMessage({
-        message: '点击',
-        type: 'success',
-    })
-}
 </script>
 
 <template>
@@ -26,7 +7,7 @@ const handleClose = () => {
         <el-container>
             <el-header height="6.5vh">
                 <div class="title">Saber</div>
-                <el-dropdown class="userinfo" @command="handleCommand">
+                <el-dropdown class="userinfo">
                     <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
                     <span class="el-dropdown-link">
                         <el-icon class="el-icon--right">
@@ -44,10 +25,14 @@ const handleClose = () => {
             <el-container>
                 <el-aside width="13vw">
                     <el-menu style="color:#fff" background-color="#03002B" text-color="#fff" active-text-color="#fff"
-                        unique-opened @open="handleOpen" @close="handleClose" router :default-active="routerPath">
+                        unique-opened router :default-active="routerPath">
                         <el-menu-item index="/manage/sendMessage">
                             <svg-icon iconName="icon-pinglun" className="svg"></svg-icon>
                             <span>消息发送</span>
+                        </el-menu-item>
+                        <el-menu-item index="/manage/ruleConfig">
+                            <svg-icon iconName="icon-changongxiao_yunyingguizepeizhi" className="svg"></svg-icon>
+                            <span>规则配置</span>
                         </el-menu-item>
                         <el-menu-item index="/manage/messageTemplate">
                             <svg-icon iconName="icon-yanzhengma" className="svg"></svg-icon>
@@ -66,7 +51,6 @@ const handleClose = () => {
                                 <el-menu-item index="/manage/userManage/manage">用户管理</el-menu-item>
                                 <el-menu-item index="/manage/userManage/userGroup">用户组配置</el-menu-item>
                                 <el-menu-item index="/manage/userManage/groupConfig">群组管理</el-menu-item>
-                                <el-menu-item index="/manage/userManage/moreGroupConfig">多群组管理</el-menu-item>
                             </el-menu-item-group>
                         </el-sub-menu>
                         <el-menu-item index="/manage/robotManage">
@@ -135,15 +119,20 @@ const handleClose = () => {
                 padding-left: 40px;
             }
 
+            ::v-deep(.el-menu-item-group__title) {
+                display: none;
+            }
+
             .el-menu-item-group {
                 ::v-deep(.el-menu-item) {
                     justify-content: center;
                 }
             }
         }
+
         .el-main {
             box-sizing: border-box;
-            background-color: rgb(240,243,248);
+            background-color: rgb(240, 243, 248);
             padding: 15px;
         }
     }

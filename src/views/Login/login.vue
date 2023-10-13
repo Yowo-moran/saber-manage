@@ -3,7 +3,10 @@ import { onetry } from '@/api/try'
 </script>
 <template>
     <div id="login">
-        <el-button @click="onetry">尝试</el-button>
+        <el-button @click="() => {
+            onetry();
+            $router.push('/manage')
+        }">尝试</el-button>
     </div>
 </template>
 <style lang="scss" scoped>

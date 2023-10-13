@@ -1,11 +1,11 @@
 import { _axios } from "@/server/index"
-import type { GetTemplateParams, DelTemplateParams, EditTemplateParams } from "../types/paramsType"
+import type { PagingParams, DelTemplateParams, EditTemplateParams } from "../types/paramsType"
 import type { CreateTemplate, EditTemplate, SearchTemplate } from "../types/dataType"
 import type { BaseResponce, GetMessageTemplateRes, SearchTemplateRes, GetManageRes } from "../types/resType"
 
 
 const getTemplate = async (page_no: number, page_size: number) => {
-    const data = await _axios.get<GetMessageTemplateRes, GetTemplateParams>(
+    const data = await _axios.get<GetMessageTemplateRes, PagingParams>(
         '/saber/template/list',
         {
             page_no,
@@ -16,7 +16,6 @@ const getTemplate = async (page_no: number, page_size: number) => {
         ElMessage.error("请求失败！");
         return;
     }
-    ElMessage.success("请求成功！");
     return data;
 }
 
@@ -68,7 +67,7 @@ const editTemplate = async (id: number, form: EditTemplate) => {
 }
 
 const searchTemplate = async (page_no: number, page_size: number, form: SearchTemplate) => {
-    const data = await _axios.post<SearchTemplateRes, GetTemplateParams, SearchTemplate>(
+    const data = await _axios.post<SearchTemplateRes, PagingParams, SearchTemplate>(
         '/saber/template/search',
         form,
         {
@@ -87,7 +86,7 @@ const searchTemplate = async (page_no: number, page_size: number, form: SearchTe
 }
 
 const getManage = async (page_no: number, page_size: number) => {
-    const data = await _axios.get<GetManageRes, GetTemplateParams>(
+    const data = await _axios.get<GetManageRes, PagingParams>(
         '/saber/admin/list',
         {
             page_no,

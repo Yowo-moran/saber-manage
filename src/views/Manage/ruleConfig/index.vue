@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { getRule, createRule, delRule, editRule } from "@/api/ruleConfig"
 import { searchTemplate } from "@/api/messageTemplate";
-import { searchUser } from "@/api/userManage/userGroup";
+import { searchUser } from "@/api/userManage/manage";
 type Optins = {
     value: string
     label: string

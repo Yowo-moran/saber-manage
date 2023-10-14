@@ -84,7 +84,7 @@ const templateDel = async (index: number) => {
 
 const allPage = ref(0);
 const currentPage = ref(1);
-const pageSize = ref(10);
+const pageSize = ref(15);
 const handleSizeChange = (val: number) => {
   pageSize.value = val;
   getList();
@@ -98,18 +98,18 @@ const handleCurrentChange = (val: number) => {
   <div class="card">
     <div class="table-top">
       <div class="table-top-left">
-        <el-input v-model="templateSearch" style="margin-right: 1.5%" size="large" placeholder="Please Input" @change="() => {
+        <el-input v-model="templateSearch" style="margin-right: 1.5%" size="large" placeholder="搜索模板名称" @change="() => {
           currentPage = 1;
-          pageSize = 10;
+          pageSize = 15;
           search()
         }">
           <template #prefix>
             <svg-icon iconName="icon-sousuo" className="svg" color="#757575"></svg-icon>
           </template>
         </el-input>
-        <el-select v-model="selectValue" style="width: 38%" placeholder="Select" size="large" @change="() => {
+        <el-select v-model="selectValue" style="width: 38%" placeholder="选择创建人" size="large" @change="() => {
           currentPage = 1;
-          pageSize = 10;
+          pageSize = 15;
           search()
         }">
           <el-option v-for="item in options" :key="item.id" :label="item.username" :value="item.username" />
@@ -124,14 +124,14 @@ const handleCurrentChange = (val: number) => {
       </el-button>
     </div>
     <div class="table-main">
-      <el-table :data="tableData" height="100%" style="width: 100%"
+      <el-table :data="tableData" height="100%" style="width: 100%" border
         :header-cell-style="{ 'background-color': '#EDF1F7', color: 'black' }" stripe>
-        <el-table-column prop="id" label="模板ID" width="150" />
-        <el-table-column prop="name" label="模板名称" width="200" />
-        <el-table-column prop="description" label="模板简介" width="200" />
-        <el-table-column prop="content" label="模板内容" />
-        <el-table-column prop="updateBy" label="创建人" width="120" />
-        <el-table-column fixed="right" label="操作项" width="180">
+        <el-table-column prop="id" label="模板ID" width="100" align="center" />
+        <el-table-column prop="name" label="模板名称" width="200" align="center" />
+        <el-table-column prop="description" label="模板简介" width="200" align="center" />
+        <el-table-column prop="content" label="模板内容" align="center" />
+        <el-table-column prop="updateBy" label="创建人" width="120" align="center" />
+        <el-table-column fixed="right" label="操作项" width="180" align="center">
           <template #default="scope">
             <el-button link style="margin-right: 20%; font-weight: 600" @click.prevent="templateDel(scope.$index)">
               <span style="font-weight: 600">删除</span>
@@ -153,7 +153,7 @@ const handleCurrentChange = (val: number) => {
       </el-table>
     </div>
     <div class="table-bottom">
-      <el-pagination v-model:current-page="currentPage" v-model:page-size="pageSize" :page-sizes="[10, 25, 50]"
+      <el-pagination v-model:current-page="currentPage" v-model:page-size="pageSize" :page-sizes="[15, 25, 50]"
         :background="true" layout="total, sizes, prev, pager, next, jumper" :total="allPage"
         @size-change="handleSizeChange" @current-change="handleCurrentChange" />
     </div>

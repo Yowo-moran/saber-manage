@@ -71,7 +71,7 @@ const routerPath: string = window.location.pathname;
                         </el-menu-item>
                     </el-menu>
                 </el-aside>
-                <el-main><router-view></router-view></el-main>
+                <el-main style="height:93.5vh"><router-view></router-view></el-main>
             </el-container>
         </el-container>
     </div>

@@ -40,4 +40,12 @@ type EditRule = {
     userId?: string;
     [property: string]: any;
 }
-export type { CreateTemplate, EditTemplate, SearchTemplate, SearchUser, CreateRule, EditRule }
+type EditUser = {
+    email?: string;
+    grade?: string;
+    mobile?: string;
+    name?: string;
+    userId?: string;
+    [property: string]: any;
+}
+export type { CreateTemplate, EditTemplate, SearchTemplate, SearchUser, CreateRule, EditRule,EditUser }

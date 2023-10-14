@@ -30,4 +30,8 @@ type EditRuleParams = {
     rule_id: number;
     [property: string]: any;
 }
-export type { PagingParams, DelTemplateParams, EditTemplateParams, DelRuleParams, EditRuleParams }
+type EditUserParams = {
+    uid: number;
+    [property: string]: any;
+}
+export type { PagingParams, DelTemplateParams, EditTemplateParams, DelRuleParams, EditRuleParams,EditUserParams }

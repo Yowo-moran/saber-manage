@@ -103,7 +103,8 @@ type User = {
     version: number;
     [property: string]: any;
 }
-type searchUserRes = BaseResponce<PagingData<User>>
+type GetUserRes = BaseResponce<PagingData<User>>
+type SearchUserRes = BaseResponce<PagingData<User>>
 
 type CreateRule = {
     createBy: string;
@@ -121,4 +122,4 @@ type CreateRule = {
     [property: string]: any;
 }
 type CreateRuleRes = BaseResponce<CreateRule>
-export type { BaseResponce, GetMessageTemplateRes, SearchTemplateRes, GetManageRes, GetRuleRes, searchUserRes, CreateRuleRes }
+export type { BaseResponce, GetMessageTemplateRes, SearchTemplateRes, GetManageRes, GetRuleRes, SearchUserRes, CreateRuleRes, GetUserRes }

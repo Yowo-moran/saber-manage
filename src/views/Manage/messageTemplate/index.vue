@@ -128,7 +128,7 @@ const handleCurrentChange = (val: number) => {
         :header-cell-style="{ 'background-color': '#EDF1F7', color: 'black' }" stripe>
         <el-table-column prop="id" label="模板ID" width="100" align="center" />
         <el-table-column prop="name" label="模板名称" width="200" align="center" />
-        <el-table-column prop="description" label="模板简介" width="200" align="center" />
+        <el-table-column prop="description" label="模板简介" width="240" align="center" />
         <el-table-column prop="content" label="模板内容" align="center" />
         <el-table-column prop="updateBy" label="创建人" width="120" align="center" />
         <el-table-column fixed="right" label="操作项" width="180" align="center">

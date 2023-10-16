@@ -21,6 +21,7 @@ type SearchTemplate = {
 }
 type SearchUser = {
     keyword: string;
+    grade:string;
     [property: string]: any;
 }
 type CreateRule = {
@@ -48,4 +49,16 @@ type EditUser = {
     userId?: string;
     [property: string]: any;
 }
-export type { CreateTemplate, EditTemplate, SearchTemplate, SearchUser, CreateRule, EditRule,EditUser }
+type AddUserGroup = {
+    email: string;
+    grade: string;
+    mobile: string;
+    name: string;
+    userId: string;
+    [property: string]: any;
+}
+type SearchUserGroup = {
+    keyword: string;
+    [property: string]: any;
+}
+export type { CreateTemplate, EditTemplate, SearchTemplate, SearchUser, CreateRule, EditRule, EditUser, AddUserGroup, SearchUserGroup }

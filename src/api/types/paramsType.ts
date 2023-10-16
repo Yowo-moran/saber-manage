@@ -1,8 +1,8 @@
 type PagingParams = {
     //默认1
-    pageNo?: number;
+    page_no?: number;
     //默认10
-    pageSize?: number;
+    page_size?: number;
     [property: string]: any;
 }
 
@@ -34,4 +34,13 @@ type EditUserParams = {
     uid: number;
     [property: string]: any;
 }
-export type { PagingParams, DelTemplateParams, EditTemplateParams, DelRuleParams, EditRuleParams,EditUserParams }
+
+type AddUserGroupParams = {
+    group_name: string;
+    [property: string]: any;
+}
+type DelUserGroupParams ={
+    gid: number;
+    [property: string]: any;
+}
+export type { PagingParams, DelTemplateParams, EditTemplateParams, DelRuleParams, EditRuleParams, EditUserParams, AddUserGroupParams,DelUserGroupParams }

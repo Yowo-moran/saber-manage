@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { getRule, createRule, delRule, editRule } from "@/api/ruleConfig"
 import { searchTemplate } from "@/api/messageTemplate";
-import { searchUser } from "@/api/userManage/manage";
+import { searchUserGroup } from "@/api/userManage/userGroup";
 type Optins = {
     value: string
     label: string
@@ -132,10 +132,10 @@ const getTemplateOptins = async (query: string) => {
 const groupLoading = ref(false)
 const groupDescription = ref("");
 const groupOptins = ref<Optins[]>([])
-const getUserOptins = async (query: string) => {
+const getUserGroupOptins = async (query: string) => {
     if (query) {
         groupLoading.value = true
-        const data = await searchUser(1, 1000, { keyword: query });
+        const data = await searchUserGroup(1, 1000, { keyword: query });
         if (data?.result_code === 'success') {
             groupLoading.value = false
             const options = data.data?.resultList.map((item) => {
@@ -185,19 +185,19 @@ const ruleCreate = async () => {
 <template>
     <div class="card search" style="height:16%;margin-bottom:1%">
         <div class="input">
-            <el-input v-model="searchFrom.id" placeholder="Please input" />
+            <el-input v-model="searchFrom.id" placeholder="搜索规则ID" />
             <label>规则ID</label>
         </div>
         <div class="input">
-            <el-input v-model="searchFrom.name" placeholder="Please input" />
+            <el-input v-model="searchFrom.name" placeholder="搜索规则名称" />
             <label>规则名称</label>
         </div>
         <div class="input">
-            <el-input v-model="searchFrom.description" placeholder="Please input" />
+            <el-input v-model="searchFrom.description" placeholder="搜索规则描述" />
             <label>描述</label>
         </div>
         <div class="input">
-            <el-select v-model="searchFrom.createBy" placeholder="Select">
+            <el-select v-model="searchFrom.createBy" placeholder="选择创建人">
                 <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
             </el-select>
             <label>创建人</label>
@@ -224,15 +224,15 @@ const ruleCreate = async () => {
             </el-button>
         </div>
         <div class="table-main">
-            <el-table :data="tableData" height="100%" style="width: 100%"
+            <el-table :data="tableData" height="100%" style="width: 100%" border
                 :header-cell-style="{ 'background-color': '#EDF1F7', color: 'black' }" stripe>
-                <el-table-column prop="id" label="规则ID" width="150" />
-                <el-table-column prop="code" label="规则代号" width="240" />
-                <el-table-column prop="templateName" label="模板名称" />
-                <el-table-column prop="groupName" label="用户组" />
-                <el-table-column prop="createBy" label="创建人" width="140" />
-                <el-table-column prop="createTime" label="创建时间" width="180" />
-                <el-table-column fixed="right" label="操作项" width="180">
+                <el-table-column prop="id" label="规则ID" width="100" align="center" />
+                <el-table-column prop="code" label="规则代号" width="150" align="center" />
+                <el-table-column prop="templateName" label="模板名称" width="200" align="center" />
+                <el-table-column prop="groupName" label="用户组" align="center"/>
+                <el-table-column prop="createBy" label="创建人" width="140" align="center" />
+                <el-table-column prop="createTime" label="创建时间" width="180" align="center" />
+                <el-table-column fixed="right" label="操作项" width="180" align="center">
                     <template #default="scope">
                         <el-button link style="margin-right: 20%; font-weight: 600" @click.prevent="ruleDel(scope.$index)">
                             <span style="font-weight: 600">删除</span>
@@ -257,7 +257,7 @@ const ruleCreate = async () => {
                 @size-change="handleSizeChange" @current-change="handleCurrentChange" />
         </div>
     </div>
-    <el-dialog v-model="dialog" width="70%" align-center :before-close="dialogClose">
+    <el-dialog v-model="dialog" width="50%" align-center :before-close="dialogClose">
         <el-form :model="dialogForm" label-width="120px">
             <el-form-item label="规则代号">
                 <el-input v-model="dialogForm.ruleCode" style="width: 40%" placeholder="输入模板名称（必填）" />
@@ -273,14 +273,14 @@ const ruleCreate = async () => {
                 <el-input v-model="templateDescription" style="width: 60%" placeholder="模板简介" disabled />
             </el-form-item>
             <el-form-item label="用户组">
-                <el-select v-model="dialogForm.groupId" filterable remote reserve-keyword placeholder="选择用户（可选）"
-                    remote-show-suffix :remote-method="getUserOptins" :loading="groupLoading" style="margin-right: 10px;"
-                    @change="() => {
-                        groupDescription = groupOptins.filter((item: any) => item.value === dialogForm.groupId)[0].description;
+                <el-select v-model="dialogForm.groupId" filterable remote reserve-keyword placeholder="选择用户组（可选）"
+                    remote-show-suffix :remote-method="getUserGroupOptins" :loading="groupLoading"
+                    style="margin-right: 10px;" @change="() => {
+                        // groupDescription = groupOptins.filter((item: any) => item.value === dialogForm.groupId)[0].description;
                     }">
                     <el-option v-for="item in groupOptins" :key="item.value" :label="item.label" :value="item.value" />
                 </el-select>
-                <el-input v-model="groupDescription" style="width: 60%" placeholder="用户手机号" disabled />
+                <el-input v-model="groupDescription" style="width: 60%" placeholder="用户组简介" disabled />
             </el-form-item>
             <el-form-item label="发送平台">
                 <div class="check-crad">

@@ -13,7 +13,7 @@ const getUser = async (page_no: number, page_size: number) => {
 
     );
     if (data.result_code !== 'success') {
-        ElMessage.error("请求失败！");
+        ElMessage.error("请求失败");
         return;
     }
     return data;
@@ -30,7 +30,7 @@ const searchUser = async (page_no: number, page_size: number, form: SearchUser) 
 
     );
     if (data.result_code !== 'success') {
-        ElMessage.error("请求失败！");
+        ElMessage.error("请求失败");
         return;
     }
     return data;
@@ -46,7 +46,7 @@ const editUser = async (id: number, form: EditUser) => {
 
     );
     if (data.result_code !== 'success') {
-        ElMessage.error("请求失败！");
+        ElMessage.error("请求失败");
         return;
     }
     return data;

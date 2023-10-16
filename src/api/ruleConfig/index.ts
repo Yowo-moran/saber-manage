@@ -12,7 +12,7 @@ const getRule = async (page_no: number, page_size: number) => {
         }
     );
     if (data.result_code !== 'success') {
-        ElMessage.error("请求失败！");
+        ElMessage.error("请求失败");
         return;
     }
     return data;
@@ -24,10 +24,10 @@ const createRule = async (form: CreateRule) => {
         form,
     );
     if (data.result_code !== 'success') {
-        ElMessage.error("请求失败！");
+        ElMessage.error("请求失败");
         return;
     }
-    ElMessage.success("请求成功！");
+    ElMessage.success("请求成功");
     return data;
 }
 
@@ -39,10 +39,10 @@ const delRule = async (id: number) => {
         },
     );
     if (data.result_code !== 'success') {
-        ElMessage.error("请求失败！");
+        ElMessage.error("请求失败");
         return;
     }
-    ElMessage.success("请求成功！");
+    ElMessage.success("请求成功");
     return data;
 }
 
@@ -55,10 +55,10 @@ const editRule = async (id: number, form: EditRule) => {
         }
     );
     if (data.result_code !== 'success') {
-        ElMessage.error("请求失败！");
+        ElMessage.error("请求失败");
         return;
     }
-    ElMessage.success("请求成功！");
+    ElMessage.success("请求成功");
     return data;
 }
 export { getRule, createRule, delRule, editRule }

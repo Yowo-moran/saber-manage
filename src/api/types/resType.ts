@@ -122,4 +122,18 @@ type CreateRule = {
     [property: string]: any;
 }
 type CreateRuleRes = BaseResponce<CreateRule>
-export type { BaseResponce, GetMessageTemplateRes, SearchTemplateRes, GetManageRes, GetRuleRes, SearchUserRes, CreateRuleRes, GetUserRes }
+
+type UserGroup = {
+    createBy?: string;
+    createTime?: string;
+    id?: number;
+    isDeleted?: number;
+    name?: string;
+    updateBy?: string;
+    updateTime?: string;
+    version?: number;
+    [property: string]: any;
+}
+type GetUserGroupRes = BaseResponce<PagingData<UserGroup>>
+type SearchUserGroupRes = BaseResponce<PagingData<UserGroup>>
+export type { BaseResponce, GetMessageTemplateRes, SearchTemplateRes, GetManageRes, GetRuleRes, SearchUserRes, CreateRuleRes, GetUserRes, GetUserGroupRes, SearchUserGroupRes }

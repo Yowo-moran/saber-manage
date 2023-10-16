@@ -46,7 +46,7 @@ const options: Options[] = reactive([
 ]);
 const selectValue = ref("");
 const search = async () => {
-  const data: any = await searchUser(currentPage.value, pageSize.value, { keyword: userSearch.value })
+  const data: any = await searchUser(currentPage.value, pageSize.value, { keyword: userSearch.value, grade: selectValue.value })
   if (data?.result_code === "success") {
     tableData.splice(0, tableData.length, ...data.data.resultList);
     allPage.value = data.data.total;
@@ -115,6 +115,7 @@ const handleCurrentChange = (val: number) => {
         <el-select v-model="selectValue" style="width: 38%" placeholder="选择年级" size="large" @change="() => {
           currentPage = 1;
           pageSize = 15;
+          search()
         }">
           <el-option v-for="item in options" :key="item.id" :label="item.username" :value="item.username" />
         </el-select>
@@ -128,7 +129,7 @@ const handleCurrentChange = (val: number) => {
         <el-table-column prop="grade" label="年级" width="100" align="center" />
         <el-table-column prop="mobile" label="手机号" width="200" align="center" />
         <el-table-column prop="email" label="邮箱" align="center" />
-        <el-table-column prop="userId" label="飞书Id" width="150" align="center" />
+        <el-table-column prop="userId" label="飞书ID" width="150" align="center" />
         <el-table-column prop="createBy" label="创建人" width="120" align="center" />
         <el-table-column prop="createTime" label="创建时间" width="180" align="center" />
         <el-table-column fixed="right" label="操作项" width="150" align="center">

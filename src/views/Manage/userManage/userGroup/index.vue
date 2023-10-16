@@ -267,16 +267,11 @@ const successUpLoad = () => {
                 <el-table-column prop="createTime" label="创建时间" width="200" align="center" />
                 <el-table-column prop="updateBy" label="更新人" width="120" align="center" />
                 <el-table-column prop="updateTime" label="更新时间" width="200" align="center" />
-                <el-table-column fixed="right" label="操作项" width="180" align="center">
+                <el-table-column fixed="right" label="操作项" width="150" align="center">
                     <template #default="scope">
-                        <el-button link style="margin-right: 20%; font-weight: 600"
+                        <el-button link style="; font-weight: 600"
                             @click.prevent="userGroupDel(scope.$index)">
                             <span style="font-weight: 600">删除</span>
-                        </el-button>
-                        <el-button color="#4460EF" plain link type="primary" style="font-weight: 600" @click.prevent="() => {
-                        }
-                            ">
-                            <span style="font-weight: 600">查看</span>
                         </el-button>
                     </template>
                 </el-table-column>

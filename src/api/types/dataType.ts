@@ -21,7 +21,7 @@ type SearchTemplate = {
 }
 type SearchUser = {
     keyword: string;
-    grade:string;
+    grade: string;
     [property: string]: any;
 }
 type CreateRule = {
@@ -61,4 +61,14 @@ type SearchUserGroup = {
     keyword: string;
     [property: string]: any;
 }
-export type { CreateTemplate, EditTemplate, SearchTemplate, SearchUser, CreateRule, EditRule, EditUser, AddUserGroup, SearchUserGroup }
+type SendMessage = {
+    attrsMap?: { [key: string]: any };
+    chatId?: string;
+    content?: string;
+    feishuAppId?: string;
+    ruleCode: string;
+    title?: string;
+    userId?: string;
+    [property: string]: any;
+}
+export type { CreateTemplate, EditTemplate, SearchTemplate, SearchUser, CreateRule, EditRule, EditUser, AddUserGroup, SearchUserGroup, SendMessage }

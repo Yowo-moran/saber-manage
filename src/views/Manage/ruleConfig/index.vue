@@ -172,7 +172,6 @@ const ruleCreate = async () => {
     dialogForm.smsStatus = checked.value.includes("短信");
     dialogForm.feishuStatus = checked.value.includes("飞书");
     const form: any = dialogForm;
-    delete form.groupId;
     const data = await createRule(form);
     if (data?.result_code === "success") {
         getRuleList();

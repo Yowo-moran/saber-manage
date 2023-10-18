@@ -39,8 +39,12 @@ type AddUserGroupParams = {
     group_name: string;
     [property: string]: any;
 }
-type DelUserGroupParams ={
+type DelUserGroupParams = {
     gid: number;
     [property: string]: any;
 }
-export type { PagingParams, DelTemplateParams, EditTemplateParams, DelRuleParams, EditRuleParams, EditUserParams, AddUserGroupParams,DelUserGroupParams }
+type SendMessageParams = {
+    app_id: string;
+    [property: string]: any;
+}
+export type { PagingParams, DelTemplateParams, EditTemplateParams, DelRuleParams, EditRuleParams, EditUserParams, AddUserGroupParams, DelUserGroupParams, SendMessageParams }

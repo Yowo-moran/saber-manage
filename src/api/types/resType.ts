@@ -136,4 +136,21 @@ type UserGroup = {
 }
 type GetUserGroupRes = BaseResponce<PagingData<UserGroup>>
 type SearchUserGroupRes = BaseResponce<PagingData<UserGroup>>
-export type { BaseResponce, GetMessageTemplateRes, SearchTemplateRes, GetManageRes, GetRuleRes, SearchUserRes, CreateRuleRes, GetUserRes, GetUserGroupRes, SearchUserGroupRes }
+
+type Robot = {
+    createBy?: null;
+    createTime?: null;
+    description?: null;
+    feishuAppId?: null;
+    feishuAppSecret?: null;
+    id?: null;
+    isDeleted?: null;
+    name?: null;
+    updateBy?: null;
+    updateTime?: null;
+    version?: null;
+    [property: string]: any;
+}
+type GetRobotRes = BaseResponce<PagingData<Robot>>
+export type { User,Robot }
+export type { BaseResponce, GetMessageTemplateRes, SearchTemplateRes, GetManageRes, GetRuleRes, SearchUserRes, CreateRuleRes, GetUserRes, GetUserGroupRes, SearchUserGroupRes, GetRobotRes }

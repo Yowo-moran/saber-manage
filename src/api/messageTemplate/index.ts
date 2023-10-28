@@ -13,7 +13,7 @@ const getTemplate = async (page_no: number, page_size: number) => {
         }
     );
     if (data.result_code !== 'success') {
-        ElMessage.error("请求失败");
+        ElMessage.error(data.message);
         return;
     }
     return data;
@@ -25,11 +25,9 @@ const createTemplate = async (form: CreateTemplate) => {
         form
     );
     if (data.result_code !== 'success') {
-        ElMessage.error("请求失败");
+        ElMessage.error(data.message);
         return;
     }
-
-    console.log(data);
     return data;
 }
 
@@ -41,10 +39,9 @@ const delTemplate = async (id: number) => {
         }
     );
     if (data.result_code !== 'success') {
-        ElMessage.error("请求失败");
+        ElMessage.error(data.message);
         return;
     }
-
     return data;
 }
 
@@ -58,11 +55,10 @@ const editTemplate = async (id: number, form: EditTemplate) => {
 
     );
     if (data.result_code !== 'success') {
-        ElMessage.error("请求失败");
+        ElMessage.error(data.message);
         return;
     }
-
-    console.log(data);
+    ElMessage.success("修改成功")
     return data;
 }
 
@@ -77,11 +73,9 @@ const searchTemplate = async (page_no: number, page_size: number, form: SearchTe
 
     );
     if (data.result_code !== 'success') {
-        ElMessage.error("请求失败");
+        ElMessage.error(data.message);
         return;
     }
-
-    console.log(data);
     return data;
 }
 
@@ -94,10 +88,9 @@ const getManage = async (page_no: number, page_size: number) => {
         }
     );
     if (data.result_code !== 'success') {
-        ElMessage.error("请求失败");
+        ElMessage.error(data.message);
         return;
     }
-
     return data;
 }
 export { getTemplate, createTemplate, delTemplate, editTemplate, searchTemplate, getManage }

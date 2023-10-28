@@ -12,6 +12,19 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/manage',
     component: () => import('../views/Manage/index.vue'),
+    redirect: '/manage/sendMessage',
+    beforeEnter: (to, from, next) => {
+      if (!localStorage.getItem('token')) {
+        if (to.path === '/login') {
+          next()
+        }
+        else {
+          router.push('/login')
+        }
+      } else {
+        next()
+      }
+    },
     children: [
       {
         path: '/manage/sendMessage',

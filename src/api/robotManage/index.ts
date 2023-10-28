@@ -12,7 +12,7 @@ const getRobot = async (page_no: number, page_size: number) => {
         }
     );
     if (data.result_code !== 'success') {
-        ElMessage.error("请求失败");
+        ElMessage.error(data.message);
         return;
     }
     return data;

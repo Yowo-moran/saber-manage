@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import { getTemplate, createTemplate, delTemplate, editTemplate, searchTemplate, getManage } from "@/api/messageTemplate";
-onMounted(() => {
-  getList()
+onMounted(async () => {
+  loading.value = true
+  await getList()
   getOptions()
+  setTimeout(() => {
+    loading.value = false
+  }, 500);
 });
-
+const loading = ref(true)
 const getList = async () => {
   const data: any = await getTemplate(currentPage.value, pageSize.value);
   if (data?.result_code === "success") {
@@ -124,7 +128,7 @@ const handleCurrentChange = (val: number) => {
       </el-button>
     </div>
     <div class="table-main">
-      <el-table :data="tableData" height="100%" style="width: 100%" border
+      <el-table v-loading="loading" :data="tableData" height="100%" style="width: 100%" border
         :header-cell-style="{ 'background-color': '#EDF1F7', color: 'black' }" stripe>
         <el-table-column prop="id" label="模板ID" width="100" align="center" />
         <el-table-column prop="name" label="模板名称" width="200" align="center" />

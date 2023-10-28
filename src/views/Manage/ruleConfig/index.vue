@@ -26,9 +26,14 @@ type ruleData = {
     feishuStatus: boolean;
 }
 
-onMounted(() => {
-    getRuleList()
+onMounted(async () => {
+    loading.value = true
+    await getRuleList()
+    setTimeout(() => {
+        loading.value = false
+    }, 500);
 })
+const loading = ref(true)
 const getRuleList = async () => {
     const data: any = await getRule(currentPage.value, pageSize.value);
     if (data?.result_code === "success") {
@@ -287,7 +292,7 @@ const resetRobotUp = () => {
             </el-button>
         </div>
         <div class="table-main">
-            <el-table :data="tableData" height="100%" style="width: 100%" border
+            <el-table v-loading="loading" :data="tableData" height="100%" style="width: 100%" border
                 :header-cell-style="{ 'background-color': '#EDF1F7', color: 'black' }" stripe>
                 <el-table-column prop="id" label="规则ID" width="100" align="center" />
                 <el-table-column prop="code" label="规则代号" width="150" align="center" />

@@ -73,7 +73,7 @@ const username: string = (localStorage.getItem('username') as string);
                     </el-menu>
                 </el-aside>
                 <el-main style="height:93.5vh">
-                    <el-watermark style="height: 100%;" :content="username" :gap="[250, 250]" :font="{ fontSize: 24,
+                    <el-watermark style="height: 100%;" :content="username" :gap="[100, 100]" :font="{ fontSize: 16,
                     color:'rgba(0,0,0,.05)' }">
                         <router-view></router-view>
                     </el-watermark>

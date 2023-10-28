@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { getTemplate, createTemplate, delTemplate, editTemplate, searchTemplate, getManage } from "@/api/messageTemplate";
 import { getUser, searchUser, editUser } from "@/api/userManage/manage"
-onMounted(() => {
-  getList()
+onMounted(async() => {
+  loading.value = true
+  await getList()
+  setTimeout(() => {
+    loading.value = false
+  }, 500);
 });
-
+const loading = ref(true)
 const getList = async () => {
   const data: any = await getUser(currentPage.value, pageSize.value);
   if (data?.result_code === "success") {
@@ -122,7 +125,7 @@ const handleCurrentChange = (val: number) => {
       </div>
     </div>
     <div class="table-main">
-      <el-table :data="tableData" height="100%" style="width: 100%" border
+      <el-table v-loading="loading" :data="tableData" height="100%" style="width: 100%" border
         :header-cell-style="{ 'background-color': '#EDF1F7', color: 'black' }" stripe>
         <el-table-column prop="id" label="ID" width="50" align="center" />
         <el-table-column prop="name" label="姓名" width="100" align="center" />

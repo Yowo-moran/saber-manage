@@ -64,7 +64,7 @@ const userOptions = ref<User[]>([])
 const getUserOptins = async (query: string) => {
     if (query) {
         userLoading.value = true
-        const data = await searchUser(1, 1000, { keyword: query, grade: '' });
+        const data = await searchUser(1, 10, { keyword: query, grade: '' });
         if (data?.result_code === 'success') {
             userLoading.value = false;
             userOptions.value = (data.data?.resultList as User[])
@@ -80,7 +80,7 @@ const wayOptions = ref([{
 }])
 const robotOptions = ref<Robot[]>([])
 const getRobotOption = async () => {
-    const data = await getRobot(1, 1000);
+    const data = await getRobot(1, 100);
     if (data?.result_code === "success") {
         robotOptions.value = (data.data?.resultList as Robot[])
     }

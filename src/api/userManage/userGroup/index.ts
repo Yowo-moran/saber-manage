@@ -12,7 +12,7 @@ const getUserGroup = async (page_no: number, page_size: number) => {
         },
     );
     if (data.result_code !== 'success') {
-        ElMessage.error("请求失败");
+        ElMessage.error(data.message);
         return;
     }
     return data;
@@ -28,7 +28,7 @@ const addUserGroup = async (group_name: string, form: AddUserGroup[]) => {
 
     );
     if (data.result_code !== 'success') {
-        ElMessage.error("请求失败");
+        ElMessage.error(data.message);
         return;
     }
     return data;
@@ -45,7 +45,7 @@ const searchUserGroup = async (page_no: number, page_size: number, form: SearchU
 
     );
     if (data.result_code !== 'success') {
-        ElMessage.error("请求失败");
+        ElMessage.error(data.message);
         return;
     }
     return data;
@@ -60,10 +60,9 @@ const delUserGroup = async (gid: number) => {
         }
     );
     if (data.result_code !== 'success') {
-        ElMessage.error("请求失败");
+        ElMessage.error(data.message);
         return;
     }
-    ElMessage.success("删除成功");
     return data;
 }
 export { addUserGroup, searchUserGroup, getUserGroup, delUserGroup }

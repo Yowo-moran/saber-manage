@@ -7,7 +7,12 @@ type CreateTemplate = {
     name: string;
     [property: string]: any;
 }
-
+type Login = {
+    password: string;
+    phone?: string;
+    username?: string;
+    [property: string]: any;
+}
 type EditTemplate = {
     content?: string;
     description?: string;
@@ -80,4 +85,4 @@ type SendMessage = {
     userId?: string;
     [property: string]: any;
 }
-export type { CreateTemplate, EditTemplate, SearchTemplate, SearchUser, CreateRule, EditRule, UpRule, EditUser, AddUserGroup, SearchUserGroup, SendMessage }
+export type { Login,CreateTemplate, EditTemplate, SearchTemplate, SearchUser, CreateRule, EditRule, UpRule, EditUser, AddUserGroup, SearchUserGroup, SendMessage }

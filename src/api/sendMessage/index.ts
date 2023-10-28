@@ -12,10 +12,10 @@ const sendMessage = async (id: string, form: SendMessage) => {
 
     );
     if (data.result_code !== 'success') {
-        ElMessage.error("请求失败");
+        ElMessage.error(data.message);
         return;
     }
-    
+    ElMessage.success("发送成功")
     return data;
 }
 export { sendMessage }

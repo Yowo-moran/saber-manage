@@ -2,15 +2,20 @@
 import { getManage } from '@/api/messageTemplate'
 import { searchUser } from '@/api/userManage/manage'
 import { addUserGroup, getUserGroup, searchUserGroup, delUserGroup } from '@/api/userManage/userGroup';
+import type { User } from '@/api/types/resType'
 import type { UploadInstance, ElTree } from 'element-plus'
 import type Node from 'element-plus/es/components/tree/src/model/node'
 
-onMounted(() => {
-    getList()
+onMounted(async () => {
+    loading.value = true
+    await getList()
     getOptions()
     getManageOptions()
+    setTimeout(() => {
+        loading.value = false
+    }, 500);
 });
-
+const loading = ref(true)
 const searchFrom = ref<any>(searchFromValue())
 function searchFromValue() {
     return {
@@ -100,13 +105,33 @@ function userGroupFormValue() {
         member: []
     }
 }
+type treeOptions = {
+    id: number;
+    name: string;
+    children: User[],
+}
 const filterText = ref('')
 const treeRef = ref<InstanceType<typeof ElTree>>()
-const treeOptions = ref(treeOptionsValue())
-const getOptions = () => {
-    treeOptions.value.map(async (item) => {
-        const data: any = await searchUser(1, 100, { keyword: "", grade: item.name.split("级").join("") });
-        item.children = data.data.resultList
+const treeOptions = ref<treeOptions[]>(treeOptionsValue())
+const getOptions = async () => {
+    // treeOptions.value.map(async (item) => {
+    //     const data: any = await searchUser(1, 100, { keyword: "", grade: item.name.split("级").join("") });
+    //     item.children = data.data.resultList
+    // })
+    const data: any = await searchUser(1, 1000, { keyword: "", grade: "" });
+    console.log(data)
+    data.data.resultList.map((item: User) => {
+        if (item.grade === "2018+") {
+            treeOptions.value[0].children.push(item)
+        } else if (item.grade === "2019") {
+            treeOptions.value[1].children.push(item)
+        } else if (item.grade === "2020") {
+            treeOptions.value[2].children.push(item)
+        } else if (item.grade === "2021") {
+            treeOptions.value[3].children.push(item)
+        } else if (item.grade === "2022") {
+            treeOptions.value[4].children.push(item)
+        }
     })
 }
 function treeOptionsValue() {
@@ -258,7 +283,7 @@ const successUpLoad = () => {
             </el-button>
         </div>
         <div class="table-main">
-            <el-table :data="tableData" height="100%" style="width: 100%" border
+            <el-table v-loading="loading" :data="tableData" height="100%" style="width: 100%" border
                 :header-cell-style="{ 'background-color': '#EDF1F7', color: 'black' }" stripe>
                 <el-table-column prop="id" label="用户组ID" width="100" align="center" />
                 <el-table-column prop="name" label="用户组名称" width="150" align="center" />
@@ -269,8 +294,7 @@ const successUpLoad = () => {
                 <el-table-column prop="updateTime" label="更新时间" width="200" align="center" />
                 <el-table-column fixed="right" label="操作项" width="150" align="center">
                     <template #default="scope">
-                        <el-button link style="; font-weight: 600"
-                            @click.prevent="userGroupDel(scope.$index)">
+                        <el-button link style="; font-weight: 600" @click.prevent="userGroupDel(scope.$index)">
                             <span style="font-weight: 600">删除</span>
                         </el-button>
                     </template>
@@ -298,7 +322,7 @@ const successUpLoad = () => {
                     </div>
                     <el-divider direction="vertical" />
                     <div class="multiple-choice-right">
-                        <strong>已选：{{delTreeOptions.length}}人</strong>
+                        <strong>已选：{{ delTreeOptions.length }}人</strong>
                         <el-tree :data="delTreeOptions" node-key="id" ref="delTreeRef" :props="defaultProps"
                             default-expand-all :expand-on-click-node="false">
                             <template #default="{ node, data }">

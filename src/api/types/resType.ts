@@ -1,6 +1,7 @@
 type BaseResponce<D> = {
     readonly result_code: string;
     data?: D;
+    message?: string;
     server_time: number;
 }
 
@@ -12,6 +13,13 @@ type PagingData<A> = {
     total: number;
     [property: string]: any;
 }
+
+type Login = {
+    token: string;
+    username: string;
+    [property: string]: any;
+}
+type LoginRes = BaseResponce<Login>
 type Template = {
     //主要内容
     content: string;
@@ -169,4 +177,4 @@ type SearchUpRule = {
 }
 type SearchUpRuleRes = BaseResponce<SearchUpRule>
 export type { User, Robot, Template, UserGroup }
-export type { BaseResponce, GetMessageTemplateRes, SearchTemplateRes, GetManageRes, GetRuleRes, SearchUserRes, CreateRuleRes, GetUserRes, GetUserGroupRes, SearchUserGroupRes, GetRobotRes, SearchUpRuleRes }
+export type { LoginRes,BaseResponce, GetMessageTemplateRes, SearchTemplateRes, GetManageRes, GetRuleRes, SearchUserRes, CreateRuleRes, GetUserRes, GetUserGroupRes, SearchUserGroupRes, GetRobotRes, SearchUpRuleRes }

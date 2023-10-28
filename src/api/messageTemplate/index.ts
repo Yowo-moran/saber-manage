@@ -28,7 +28,7 @@ const createTemplate = async (form: CreateTemplate) => {
         ElMessage.error("请求失败");
         return;
     }
-    ElMessage.success("请求成功");
+
     console.log(data);
     return data;
 }
@@ -44,7 +44,7 @@ const delTemplate = async (id: number) => {
         ElMessage.error("请求失败");
         return;
     }
-    ElMessage.success("请求成功");
+
     return data;
 }
 
@@ -61,7 +61,7 @@ const editTemplate = async (id: number, form: EditTemplate) => {
         ElMessage.error("请求失败");
         return;
     }
-    ElMessage.success("请求成功");
+
     console.log(data);
     return data;
 }
@@ -80,7 +80,7 @@ const searchTemplate = async (page_no: number, page_size: number, form: SearchTe
         ElMessage.error("请求失败");
         return;
     }
-    ElMessage.success("请求成功");
+
     console.log(data);
     return data;
 }
@@ -97,7 +97,7 @@ const getManage = async (page_no: number, page_size: number) => {
         ElMessage.error("请求失败");
         return;
     }
-    ElMessage.success("请求成功");
+
     return data;
 }
 export { getTemplate, createTemplate, delTemplate, editTemplate, searchTemplate, getManage }

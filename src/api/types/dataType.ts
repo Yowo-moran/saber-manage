@@ -41,6 +41,15 @@ type EditRule = {
     userId?: string;
     [property: string]: any;
 }
+type UpRule = {
+    chatId: string;
+    feishuAppId: string;
+    messageType: string;
+    ruleId: number;
+    templateId?: string;
+    userId: string;
+    [property: string]: any;
+}
 type EditUser = {
     email?: string;
     grade?: string;
@@ -71,4 +80,4 @@ type SendMessage = {
     userId?: string;
     [property: string]: any;
 }
-export type { CreateTemplate, EditTemplate, SearchTemplate, SearchUser, CreateRule, EditRule, EditUser, AddUserGroup, SearchUserGroup, SendMessage }
+export type { CreateTemplate, EditTemplate, SearchTemplate, SearchUser, CreateRule, EditRule, UpRule, EditUser, AddUserGroup, SearchUserGroup, SendMessage }

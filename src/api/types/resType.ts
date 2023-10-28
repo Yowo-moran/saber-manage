@@ -14,19 +14,19 @@ type PagingData<A> = {
 }
 type Template = {
     //主要内容
-    content?: string;
-    createBy?: string;
-    createTime?: string;
+    content: string;
+    createBy: string;
+    createTime: string;
     //简介
-    description?: string;
+    description: string;
     //templateId
-    id?: number;
-    isDeleted?: number;
+    id: number;
+    isDeleted: number;
     //名称
-    name?: string;
-    updateBy?: string;
-    updateTime?: string;
-    version?: number;
+    name: string;
+    updateBy: string;
+    updateTime: string;
+    version: number;
     [property: string]: any;
 }
 type GetMessageTemplateRes = BaseResponce<PagingData<Template>>
@@ -55,16 +55,16 @@ type SearchTemplateData<A> = {
 type SearchTemplateRes = BaseResponce<SearchTemplateData<resultList>>
 
 type Manage = {
-    createBy?: string;
-    createTime?: string;
-    id?: number;
-    isDeleted?: number;
-    password?: string;
-    phone?: string;
-    updateBy?: string;
-    updateTime?: string;
-    username?: string;
-    version?: number;
+    createBy: string;
+    createTime: string;
+    id: number;
+    isDeleted: number;
+    password: string;
+    phone: string;
+    updateBy: string;
+    updateTime: string;
+    username: string;
+    version: number;
     [property: string]: any;
 }
 
@@ -124,33 +124,49 @@ type CreateRule = {
 type CreateRuleRes = BaseResponce<CreateRule>
 
 type UserGroup = {
-    createBy?: string;
-    createTime?: string;
-    id?: number;
-    isDeleted?: number;
-    name?: string;
-    updateBy?: string;
-    updateTime?: string;
-    version?: number;
+    createBy: string;
+    createTime: string;
+    id: number;
+    isDeleted: number;
+    name: string;
+    updateBy: string;
+    updateTime: string;
+    version: number;
     [property: string]: any;
 }
 type GetUserGroupRes = BaseResponce<PagingData<UserGroup>>
 type SearchUserGroupRes = BaseResponce<PagingData<UserGroup>>
 
 type Robot = {
-    createBy?: null;
-    createTime?: null;
-    description?: null;
-    feishuAppId?: null;
-    feishuAppSecret?: null;
-    id?: null;
-    isDeleted?: null;
-    name?: null;
-    updateBy?: null;
-    updateTime?: null;
-    version?: null;
+    createBy: null;
+    createTime: null;
+    description: null;
+    feishuAppId: null;
+    feishuAppSecret: null;
+    id: null;
+    isDeleted: null;
+    name: null;
+    updateBy: null;
+    updateTime: null;
+    version: null;
     [property: string]: any;
 }
 type GetRobotRes = BaseResponce<PagingData<Robot>>
-export type { User,Robot }
-export type { BaseResponce, GetMessageTemplateRes, SearchTemplateRes, GetManageRes, GetRuleRes, SearchUserRes, CreateRuleRes, GetUserRes, GetUserGroupRes, SearchUserGroupRes, GetRobotRes }
+
+type SearchUpRule = {
+    chatId: string;
+    createBy: string;
+    createTime: string;
+    feishuAppId: string;
+    messageType: string;
+    ruleId: number;
+    templateId: string;
+    updateBy: string;
+    updateTime: string;
+    userId: null;
+    version: number;
+    [property: string]: any;
+}
+type SearchUpRuleRes = BaseResponce<SearchUpRule>
+export type { User, Robot, Template, UserGroup }
+export type { BaseResponce, GetMessageTemplateRes, SearchTemplateRes, GetManageRes, GetRuleRes, SearchUserRes, CreateRuleRes, GetUserRes, GetUserGroupRes, SearchUserGroupRes, GetRobotRes, SearchUpRuleRes }

@@ -10,6 +10,7 @@ const onetry = async () => {
     )
     console.log(data)
     localStorage.setItem('token', data.data.token)
+    localStorage.setItem('username', data.data.username)
 }
 
 export { onetry }

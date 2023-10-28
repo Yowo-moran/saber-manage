@@ -43,7 +43,9 @@ const searchContent = async (keyword: string) => {
 
 const ruleCodeChange = (item: any) => {
     resetSendForm()
+    if (item.templateName !== null) {
     searchContent(item.templateName)
+    }
     sendForm.value.ruleCode = item.code;
     sendForm.value.userGroup = item.groupName;
     if (item.feishuStatus) {
@@ -89,7 +91,7 @@ const send = async () => {
         ElMessage.error("请选择发送规则")
         return
     }
-    await sendMessage("1", sendForm.value);
+    await sendMessage("TEST", sendForm.value);
 }
 </script>
 <template>

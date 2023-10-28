@@ -7,7 +7,7 @@ const sendMessage = async (id: string, form: SendMessage) => {
         '/saber/notification',
         form,
         {
-            app_id: id
+            app_code: id
         },
 
     );
@@ -15,7 +15,7 @@ const sendMessage = async (id: string, form: SendMessage) => {
         ElMessage.error("请求失败");
         return;
     }
-    ElMessage.success("请求成功");
+    
     return data;
 }
 export { sendMessage }

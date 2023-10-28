@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 const routerPath: string = window.location.pathname;
+const username: string = (localStorage.getItem('username') as string);
 </script>
 
 <template>
@@ -72,7 +73,10 @@ const routerPath: string = window.location.pathname;
                     </el-menu>
                 </el-aside>
                 <el-main style="height:93.5vh">
-                    <router-view></router-view>
+                    <el-watermark style="height: 100%;" :content="username" :gap="[250, 250]" :font="{ fontSize: 24,
+                    color:'rgba(0,0,0,.05)' }">
+                        <router-view></router-view>
+                    </el-watermark>
                 </el-main>
             </el-container>
         </el-container>
